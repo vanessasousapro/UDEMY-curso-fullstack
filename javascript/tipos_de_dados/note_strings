@@ -1,0 +1,185 @@
+## Aula: Strings em JavaScript
+
+### Caracter de Escape com Aspas Duplas
+Em JavaScript, as strings podem ser delimitadas por aspas simples (`'`) ou aspas duplas (`"`). No entanto, se for necessário incluir aspas duplas dentro de uma string delimitada por aspas duplas, utiliza-se a barra invertida (`\`) como um caractere de escape para evitar erros de sintaxe no código.
+
+**Exemplo:**
+```javascript
+let texto = "Ela disse: \"Olá!\"";
+console.log(texto);  // Saída: Ela disse: "Olá!"
+```
+
+Neste exemplo, as aspas duplas dentro da string são escapadas com `\` para evitar conflito com as aspas que delimitam a string.
+
+### Strings Indexadas
+As strings em JavaScript são indexadas, o que significa que cada caractere possui um índice, começando do 0. É possível acessar qualquer caractere de uma string usando a notação de colchetes.
+
+**Exemplo:**
+```javascript
+let texto = 'Um texto';
+console.log(texto[4]);  // Saída: 'e'
+console.log(texto[8]);  // Saída: undefined (não há caractere na posição 8)
+```
+
+Neste exemplo, o índice 4 retorna o caractere `'e'`, enquanto o índice 8 resulta em `undefined`, pois não há caractere nessa posição.
+
+### Função `.charAt()`
+A função `.charAt()` retorna o caractere em um índice específico da string.
+
+**Exemplo:**
+```javascript
+let texto = 'Um texto';
+console.log(texto.charAt(4));  // Saída: 'e'
+console.log(texto.charAt(8));  // Saída: ''
+```
+
+No exemplo, `.charAt(8)` retorna uma string vazia, pois o índice está fora do alcance da string.
+
+### Função `.concat()`, Operador `+` e Template Strings
+A função `.concat()` combina duas ou mais strings. No entanto, há outras maneiras de concatenar strings, como o operador `+` e as *template strings*.
+
+**Exemplo:**
+```javascript
+let texto1 = 'Um texto';
+console.log(texto1.concat(' em um lindo dia.'));  // Saída: 'Um texto em um lindo dia.'
+console.log(texto1 + ' em um lindo dia.');        // Saída: 'Um texto em um lindo dia.'
+console.log(`${texto1} em um lindo dia.`);        // Saída: 'Um texto em um lindo dia.'
+```
+
+A recomendação é utilizar *template strings* (delimitadas por crases `) quando for necessário incluir variáveis ou expressões dentro da string, pois elas oferecem mais flexibilidade e legibilidade.
+
+### Função `.indexOf()`
+A função `.indexOf()` busca a primeira ocorrência de um determinado texto dentro da string.
+
+**Exemplo:**
+```javascript
+let texto = 'Um texto';
+console.log(texto.indexOf('texto'));  // Saída: 3
+console.log(texto.indexOf('o', 3));   // Saída: 5 (procura 'o' após o índice 3)
+```
+
+### Função `.lastIndexOf()`
+Semelhante a `.indexOf()`, a função `.lastIndexOf()` retorna a última ocorrência de um caractere ou sequência de caracteres.
+
+### Expressões Regulares e Funções de Busca
+Expressões regulares permitem a busca de padrões em strings.
+
+**Exemplos:**
+```javascript
+console.log(texto.match(/[a-z]/g));       // Retorna todas as letras minúsculas
+console.log(texto.search(/[a-z]/g));      // Retorna o índice da primeira correspondência
+console.log(texto.replace(/Um/, 'Outro'));// Substitui 'Um' por 'Outro'
+```
+
+#### Flag `g` em Expressões Regulares
+A flag `g` (global) faz com que a busca ou substituição ocorra em toda a string.
+
+**Exemplos:**
+```javascript
+console.log(texto.replace(/r/, '#'));     // Substitui apenas a primeira ocorrência de 'r'
+console.log(texto.replace(/r/g, '#'));    // Substitui todas as ocorrências de 'r'
+```
+
+### Atributo `.length`
+A propriedade `.length` retorna o tamanho da string, ou seja, o número de caracteres.
+
+**Exemplo:**
+```javascript
+let texto = 'Um texto';
+console.log(texto.length);  // Saída: 8
+```
+
+### Função `.slice()`
+A função `.slice()` retorna uma parte de uma string, com base nos índices informados.
+
+**Exemplo:**
+```javascript
+let texto = 'O rato roeu a roupa do rei de roma.';
+console.log(texto.slice(2, 6));   // Saída: 'rato'
+console.log(texto.slice(-3));     // Saída: 'ma.'
+```
+
+### Diferença no Uso do `.slice()`
+Quando usamos índices negativos em `.slice()`, eles representam posições a partir do final da string.
+
+**Exemplo:**
+```javascript
+let texto = 'O rato roeu a roupa do rei de roma.';
+console.log(texto.slice(-5, texto.length - 1));  // Saída: 'roma'
+```
+
+### Função `.substring()`
+A função `.substring()` funciona de maneira similar a `.slice()`, mas não aceita índices negativos.
+
+**Exemplo:**
+```javascript
+let texto = 'O rato roeu a roupa do rei de roma.';
+console.log(texto.substring(texto.length - 5, texto.length - 1));  // Saída: 'roma'
+```
+
+### Função `.split()`
+A função `.split()` divide uma string em um array, com base em um delimitador.
+
+**Exemplo:**
+```javascript
+let texto = 'O rato roeu a roupa do rei de roma.';
+console.log(texto.split(' ', 3));  // Saída: ['O', 'rato', 'roeu']
+```
+
+### Funções `.toUpperCase()` e `.toLowerCase()`
+Essas funções convertem uma string para maiúsculas ou minúsculas.
+
+**Exemplo:**
+```javascript
+let texto = 'O rato roeu a roupa do rei de roma.';
+console.log(texto.toUpperCase());  // Saída: 'O RATO ROEU A ROUPA DO REI DE ROMA.'
+console.log(texto.toLowerCase());  // Saída: 'o rato roeu a roupa do rei de roma.'
+```
+-------------------------------------------------------------------------------------
+## Aula: Exercício com Strings no Console do Browser
+
+### Função `document.write()`
+No console do Chrome, podemos utilizar a função `document.write()` para inserir diretamente um texto no documento HTML. Exemplo:
+```javascript
+document.write('Um texto');
+```
+Esse comando escreve o texto `'Um texto'` diretamente no corpo do documento HTML.
+
+### O Objeto `window` e o Objeto `document`
+O JavaScript que roda no browser tem acesso ao objeto global `window`, que representa a janela do navegador. Dentro de `window`, temos o objeto `document`, que representa o conteúdo do documento HTML.
+
+- **Acesso Abreviado:** Como `document` já está dentro de `window`, podemos abreviar a chamada e utilizar apenas `document`, ao invés de `window.document`.
+
+**Exemplo:**
+```javascript
+window.document.body.innerHTML = 'Qualquer texto'; // Acesso completo
+document.body.innerHTML = 'Qualquer texto'; // Acesso abreviado
+```
+
+### Comando `window.document.body.innerHTML = 'Qualquer texto';`
+Esse comando altera o conteúdo HTML do corpo (`body`) do documento. O que está acontecendo:
+
+- `window.document`: refere-se ao objeto documento no contexto da janela.
+- `body`: refere-se à tag `<body>` dentro do documento.
+- `innerHTML`: permite acessar ou modificar o conteúdo HTML dentro do elemento `body`.
+
+Quando utilizamos o sinal de atribuição (`=`), o conteúdo atual do `body` é substituído pela nova string fornecida, apagando qualquer conteúdo anterior.
+
+### Comando `window.document.body.innerHTML += 'Qualquer outro texto';`
+Nesse caso, estamos utilizando o operador `+=`, que realiza uma concatenação e atribuição. O que acontece aqui:
+
+- O operador `+=` adiciona o novo texto (`'Qualquer outro texto'`) ao conteúdo existente, em vez de substituir completamente o conteúdo do `body`.
+- Assim, o texto anterior não é apagado, apenas expandido com o novo conteúdo.
+
+### Problema: Textos Aparecem na Mesma Linha
+Quando utilizamos o comando anterior, os textos aparecem em uma única linha, pois o HTML não adiciona quebras de linha automaticamente ao concatenar strings.
+
+### Solução: Adicionar Quebra de Linha com a Tag `<br/>`
+Para resolver isso e garantir que os textos apareçam em linhas separadas, utilizamos a tag de quebra de linha (`<br/>`).
+
+**Exemplo:**
+```javascript
+document.body.innerHTML += 'Adicionamos a tag br <br/>';
+```
+
+Esse comando concatena o texto e adiciona uma quebra de linha com a tag `<br/>`. Assim, o próximo conteúdo será exibido em uma nova linha no documento HTML.
