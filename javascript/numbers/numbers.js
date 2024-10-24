@@ -33,12 +33,12 @@ console.log(Number.isInteger(num8));
 let temp = num8 * 'Ola';
 console.log(Number.isNaN(temp)); //Não faça contas com strings, isso não é uma boa pratica de programação.
 
-//Padrão IEEE 754-2008 faça uma explicação sucinta sobre esse padrão em javascript.
+/*Padrão IEEE 754-2008 Esse padrão define como os números de ponto flutuante são representados em JavaScript e outros sistemas, o que pode levar a pequenas imprecisões em operações com números decimais.*/
 
 //Testando imprecisão do padrão de números do javascript
 let num9 = 0.7; //number
 let num10 = 0.1; //number
-console.log(num9 + num10); //Saída: 0.79999999999999999
+console.log(num9 + num10); //Saída: Saída: 0.7999999999999999
 
 //Testando imprecisão do padrão de números do javascript
 let num11 = 0.7; //number
